@@ -254,6 +254,12 @@ def api_del(pid):
     db().execute("DELETE FROM saved_plans WHERE plan_id=?", (pid,)); db().commit()
     return jsonify(ok=True)
 
+# Initialize database when the app starts
+init_db()
+
 if __name__ == "__main__":
-    init_db()
-    app.run(debug=True, port=5000)
+    app.run(
+        host="0.0.0.0",
+        port=5000,
+        debug=False
+    )
