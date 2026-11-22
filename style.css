@@ -1,0 +1,210 @@
+:root{
+  --g1:#5b2bd6;--g2:#ff3d8b;--g3:#ff9a3d;
+  --accent:#ff3d8b;--accent-ink:#fff;
+  --ink:#241046;--muted:rgba(36,16,70,.68);--line:rgba(36,16,70,.14);
+  --disp:'Bricolage Grotesque',system-ui,sans-serif;--body:'DM Sans',system-ui,sans-serif;
+  --green:#2fd67b;--yellow:#ffc531;--red:#ff4d5e;
+  --deco:none;
+}
+
+/* ================= VIBE SCENES ================= */
+/* Friends: neon sunset + confetti */
+body[data-vibe=Friends]{
+  --g1:#4a1fb8;--g2:#ff3d8b;--g3:#ffa23d;
+  --accent:#ff3d8b;--ink:#2a1250;--muted:rgba(42,18,80,.68);--line:rgba(42,18,80,.14);
+  --deco:
+    radial-gradient(circle at 8% 14%,#ffe14d 0 7px,transparent 8px),
+    radial-gradient(circle at 22% 70%,#00e0c6 0 9px,transparent 10px),
+    radial-gradient(circle at 38% 28%,#fff 0 5px,transparent 6px),
+    radial-gradient(circle at 56% 86%,#ffe14d 0 8px,transparent 9px),
+    radial-gradient(circle at 72% 12%,#00e0c6 0 7px,transparent 8px),
+    radial-gradient(circle at 90% 60%,#fff 0 6px,transparent 7px),
+    radial-gradient(circle at 84% 90%,#ffe14d 0 10px,transparent 11px),
+    radial-gradient(circle at 14% 92%,#fff 0 6px,transparent 7px),
+    radial-gradient(circle at 70% 40%,rgba(255,255,255,.18) 0 160px,transparent 161px);
+}
+/* Couples: rose dusk + glowing sun */
+body[data-vibe=Couples]{
+  --g1:#7a1d4f;--g2:#ff6f91;--g3:#ffc7a1;
+  --accent:#e23e6b;--ink:#4a1030;--muted:rgba(74,16,48,.68);--line:rgba(74,16,48,.14);
+  --deco:
+    radial-gradient(circle at 80% 24%,#fff6e0 0 70px,transparent 71px),
+    radial-gradient(circle at 80% 24%,rgba(255,226,190,.75) 0 150px,transparent 360px),
+    radial-gradient(circle at 12% 20%,rgba(255,255,255,.35) 0 4px,transparent 5px),
+    radial-gradient(circle at 30% 76%,rgba(255,255,255,.35) 0 6px,transparent 7px),
+    radial-gradient(circle at 62% 62%,rgba(255,255,255,.3) 0 5px,transparent 6px),
+    radial-gradient(circle at 92% 82%,rgba(255,255,255,.35) 0 7px,transparent 8px);
+}
+/* Family: sunny sky + green hills */
+body[data-vibe=Family]{
+  --g1:#3aa7f0;--g2:#8fd8ff;--g3:#e9fbff;
+  --accent:#17a56a;--ink:#0e3d2b;--muted:rgba(14,61,43,.68);--line:rgba(14,61,43,.14);
+  --deco:
+    radial-gradient(circle at 84% 16%,#fff7b0 0 56px,transparent 57px),
+    radial-gradient(circle at 84% 16%,rgba(255,238,140,.7) 0 110px,transparent 300px),
+    radial-gradient(ellipse 60% 34% at 18% 108%,#37b76f 0 99%,transparent 100%),
+    radial-gradient(ellipse 70% 30% at 66% 112%,#4fcf86 0 99%,transparent 100%),
+    radial-gradient(ellipse 50% 26% at 100% 104%,#2da35f 0 99%,transparent 100%),
+    radial-gradient(ellipse 14% 5% at 24% 22%,rgba(255,255,255,.9) 0 99%,transparent 100%),
+    radial-gradient(ellipse 18% 6% at 52% 12%,rgba(255,255,255,.85) 0 99%,transparent 100%);
+}
+/* Solo: calm night + moon + stars */
+body[data-vibe=Solo]{
+  --g1:#071a3a;--g2:#0e4a6b;--g3:#1fa3a0;
+  --accent:#4f46e5;--ink:#0f1a45;--muted:rgba(15,26,69,.68);--line:rgba(15,26,69,.14);
+  --deco:
+    radial-gradient(circle at 82% 20%,#f7f3d2 0 34px,transparent 35px),
+    radial-gradient(circle at 82% 20%,rgba(247,243,210,.35) 0 60px,transparent 230px),
+    radial-gradient(1.6px 1.6px at 20px 30px,#fff,transparent),
+    radial-gradient(1.2px 1.2px at 90px 80px,#fff,transparent),
+    radial-gradient(1.8px 1.8px at 140px 20px,#cfe,transparent),
+    radial-gradient(1.2px 1.2px at 60px 130px,#fff,transparent);
+}
+body[data-vibe=Solo]{--deco-size:auto,auto,160px 160px,160px 160px,160px 160px,160px 160px}
+
+/* ================= BASE ================= */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);color:var(--ink);min-height:100vh;background:var(--g1)}
+
+/* the scene */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;
+  background:var(--deco),linear-gradient(160deg,var(--g1) 0%,var(--g2) 55%,var(--g3) 100%);
+  background-size:var(--deco-size,auto);
+  transition:background .6s;
+}
+body[data-vibe=Solo]::before{
+  background:
+    radial-gradient(circle at 82% 20%,#f7f3d2 0 34px,transparent 35px),
+    radial-gradient(circle at 82% 20%,rgba(247,243,210,.35) 0 60px,transparent 230px),
+    radial-gradient(1.6px 1.6px at 20px 30px,#fff,transparent) 0 0/160px 160px,
+    radial-gradient(1.2px 1.2px at 90px 80px,#fff,transparent) 0 0/160px 160px,
+    radial-gradient(1.8px 1.8px at 140px 20px,#cfe,transparent) 0 0/160px 160px,
+    radial-gradient(1.2px 1.2px at 60px 130px,#fff,transparent) 0 0/160px 160px,
+    linear-gradient(170deg,var(--g1) 0%,var(--g2) 60%,var(--g3) 100%);
+}
+
+/* floating emojis */
+.scene{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.floaters span{position:absolute;bottom:-60px;animation:rise linear infinite;opacity:.85}
+@keyframes rise{to{transform:translateY(-115vh) rotate(40deg);opacity:0}}
+body[data-vibe=Solo] .floaters span{animation-name:twinkle;bottom:auto;animation-timing-function:ease-in-out;animation-direction:alternate}
+@keyframes twinkle{from{opacity:.1}to{opacity:.9}}
+
+/* ================= LAYOUT ================= */
+.top,.layout{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 20px}
+.top{padding-top:34px}
+h1{font-family:var(--disp);font-weight:800;font-size:clamp(2.6rem,6.5vw,5rem);letter-spacing:-.045em;margin:0;line-height:.95;color:#fff;text-shadow:0 4px 24px rgba(0,0,0,.28)}
+#tagline{font-size:1.15rem;color:#fff;margin:12px 0 26px;max-width:56ch;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+h2{font-family:var(--disp);font-weight:800;font-size:1.25rem;margin:0 0 14px;letter-spacing:-.01em;color:var(--ink)}
+.layout{display:grid;grid-template-columns:360px 1fr;gap:22px;padding-bottom:60px;align-items:start}
+
+/* ================= CARDS (light frosted glass) ================= */
+.panel{
+  background:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.95);border-radius:24px;padding:22px;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--ink);
+  box-shadow:0 22px 50px rgba(20,10,50,.22);
+}
+.form{position:sticky;top:16px}
+
+/* ================= FORM ================= */
+label{display:block;font-size:.85rem;font-weight:500;color:var(--muted);margin-bottom:12px}
+input,select{width:100%;margin-top:5px;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-size:1rem}
+input:focus,select:focus,button:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.perhead{font-family:var(--disp);font-size:1.7rem;margin:-2px 0 14px;font-weight:800;color:var(--accent)}
+.perhead small{font-family:var(--body);font-weight:400;font-size:.85rem;color:var(--muted)}
+
+.vibes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.vibe{border:2px solid var(--line);background:#fff;color:var(--ink);border-radius:18px;padding:14px 8px;font:700 1rem var(--disp);cursor:pointer;transition:transform .2s,background .3s,box-shadow .3s}
+.vibe span{display:block;font-size:1.7rem;margin-bottom:2px}
+.vibe:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.12)}
+.vibe.active{background:var(--accent);color:var(--accent-ink);border-color:transparent;transform:scale(1.05) rotate(-1.5deg);box-shadow:0 10px 22px rgba(0,0,0,.25)}
+
+.seg{display:flex;background:rgba(36,16,70,.08);border-radius:14px;padding:4px;margin:4px 0 16px}
+.seg button{flex:1;border:0;background:none;color:var(--ink);padding:10px 6px;border-radius:10px;font:500 .85rem var(--body);cursor:pointer}
+.seg button.on{background:var(--accent);color:var(--accent-ink);font-weight:700}
+
+.go{width:100%;border:0;border-radius:16px;padding:15px;background:var(--accent);color:var(--accent-ink);font:800 1.1rem var(--disp);cursor:pointer;transition:transform .15s,box-shadow .2s;box-shadow:0 10px 24px rgba(0,0,0,.22)}
+.go:hover{box-shadow:0 14px 30px rgba(0,0,0,.3)}
+.go:active{transform:scale(.97)}
+.ghost{background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:8px 14px;cursor:pointer;font:inherit;font-size:.85rem;font-weight:500}
+.ghost:hover{background:rgba(36,16,70,.06)}
+.muted{color:var(--muted);font-size:.9rem}
+
+/* ================= RESULTS ================= */
+.summary{font-family:var(--disp);font-size:1.35rem;font-weight:500;margin-bottom:14px;min-height:1.6em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.plan{margin-bottom:20px}
+.plan-head{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin-bottom:14px}
+.plan-head h2{margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.stat{background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.stat b{display:block;font-family:var(--disp);font-size:1.35rem;color:var(--accent)}
+.stat small{color:var(--muted)}
+
+.timeline{position:relative;margin-left:8px;padding-left:26px;border-left:3px dashed var(--line)}
+.stop{position:relative;padding-bottom:20px}
+.stop::before{content:"";position:absolute;left:-36px;top:4px;width:17px;height:17px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.stop .time{font-size:.8rem;color:var(--muted)}
+.stop h3{margin:2px 0 4px;font:800 1.1rem var(--disp);color:var(--ink)}
+.hop{font-size:.8rem;color:var(--muted);margin-bottom:6px}
+.cost{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;font-size:.82rem}
+.cost span{background:rgba(36,16,70,.07);border-radius:8px;padding:4px 9px}
+.cost .t{background:var(--accent);color:var(--accent-ink);font-weight:700}
+
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:99px;color:#0b3a22}
+.badge.green{background:var(--green)}
+.badge.yellow{background:var(--yellow);color:#3a2a00}
+.badge.red{background:var(--red);color:#fff}
+.live{font-size:.7rem;margin-left:8px;padding:2px 8px;border-radius:6px;background:rgba(36,16,70,.1);color:var(--ink);font-weight:700;vertical-align:middle}
+.empty{padding:30px;text-align:center}
+
+/* ================= SAVED ================= */
+.saved{margin-top:20px}
+.logs{list-style:none;margin:10px 0 0;padding:0;font-size:.86rem;color:var(--muted)}
+.logs li{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.logs button{background:none;border:0;color:var(--accent);cursor:pointer;text-decoration:underline;font-weight:600}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .form{position:static}
+  .stats{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ================= VIBE SIGNS ================= */
+.top{position:relative}
+.sign{
+  position:absolute;right:20px;top:18px;min-width:170px;padding:14px 22px 12px;text-align:center;
+  background:rgba(255,255,255,.88);border-radius:28px;box-shadow:0 16px 40px rgba(20,10,50,.28);
+  border:3px solid var(--accent);
+}
+.sign::before{display:block;font-size:4.6rem;line-height:1.1}
+.sign::after{display:block;margin-top:4px;font:800 1rem var(--disp);color:var(--accent)}
+.sign.pop{animation:signPop .7s cubic-bezier(.2,1.6,.4,1)}
+@keyframes signPop{from{transform:scale(.3) rotate(-18deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+
+body[data-vibe=Couples] .sign::before{content:"💑"}
+body[data-vibe=Couples] .sign::after {content:"Couples · date mode"}
+body[data-vibe=Friends] .sign::before{content:"👯"}
+body[data-vibe=Friends] .sign::after {content:"Friends · squad mode"}
+body[data-vibe=Family]  .sign::before{content:"👨‍👩‍👧‍👦"}
+body[data-vibe=Family]  .sign::after {content:"Family · fun day"}
+body[data-vibe=Solo]    .sign::before{content:"🚶"}
+body[data-vibe=Solo]    .sign::after {content:"Solo · me-time"}
+
+/* big faint sign in the background */
+body::after{
+  position:fixed;right:-2vw;bottom:-6vh;z-index:0;pointer-events:none;
+  font-size:min(46vw,520px);line-height:1;opacity:.14;filter:saturate(1.2);
+}
+body[data-vibe=Couples]::after{content:"💞"}
+body[data-vibe=Friends]::after{content:"🎉"}
+body[data-vibe=Family]::after {content:"🏡"}
+body[data-vibe=Solo]::after   {content:"🌙"}
+
+@media(max-width:900px){
+  .sign{position:static;display:inline-block;min-width:0;margin-bottom:16px}
+  .sign::before{font-size:3rem}
+}

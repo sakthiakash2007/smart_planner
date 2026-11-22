@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Planner – Crowd-aware outings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body data-vibe="Friends">
+<div class="scene" aria-hidden="true"><div class="floaters" id="floaters"></div></div>
+
+<header class="top">
+  <h1>Smart Planner</h1>
+  <p id="tagline">Pick a vibe. We’ll find the quiet spots that fit your wallet.</p>
+</header>
+
+<main class="layout">
+  <section class="panel form">
+    <h2>Plan your outing</h2>
+    <div class="vibes" role="radiogroup" aria-label="Group vibe">
+      <button type="button" class="vibe" data-v="Solo"><span>🎧</span>Solo</button>
+      <button type="button" class="vibe active" data-v="Friends"><span>🎉</span>Friends</button>
+      <button type="button" class="vibe" data-v="Couples"><span>💞</span>Couples</button>
+      <button type="button" class="vibe" data-v="Family"><span>🌼</span>Family</button>
+    </div>
+
+    <label>City
+      <select id="city"><option>Chennai</option><option>Coimbatore</option></select>
+    </label>
+    <div class="row">
+      <label>Group budget (₹)<input type="number" id="budget" value="2000" min="100" step="50"></label>
+      <label>People<input type="number" id="people" value="4" min="1" max="20"></label>
+    </div>
+    <div class="perhead">₹<b id="perhead">500</b> <small>per head</small></div>
+
+    <label>Day &amp; time
+      <select id="slot">
+        <option value="weekday_morning">Weekday morning</option>
+        <option value="weekday_evening">Weekday evening</option>
+        <option value="weekend_morning">Weekend morning</option>
+        <option value="weekend_evening" selected>Weekend evening</option>
+      </select>
+    </label>
+
+    <div class="seg" id="crowdPref">
+      <button type="button" class="on" data-a="1">Avoid busy places</button>
+      <button type="button" data-a="0">Show everything</button>
+    </div>
+    <button class="go" id="planBtn">Build my itinerary</button>
+  </section>
+
+  <section class="results">
+    <div id="summary" class="summary"></div>
+    <div id="plans"></div>
+    <div class="panel saved"><h2>Saved plans</h2><ul id="saved" class="logs"></ul></div>
+  </section>
+</main>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
